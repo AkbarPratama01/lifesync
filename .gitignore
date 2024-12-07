@@ -1,5 +1,0 @@
-/vendor
-/.env
-/node_modules
-/storage
-composer.lock
