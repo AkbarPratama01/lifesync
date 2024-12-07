@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/Config/database.php';
+
+use App\Models\User;
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+echo "Insert User Data\n";
+
+// Data pengguna yang akan ditambahkan
+$userData = [
+    [
+        'name' => 'John Doe',
+        'username' => 'John Doe',
+        'email' => 'john@example.com',
+        'password' => password_hash('password', PASSWORD_DEFAULT),
+    ],
+    [
+        'name' => 'Jane Smith',
+        'username' => 'Jane Smith',
+        'email' => 'jane@example.com',
+        'password' => password_hash('password', PASSWORD_DEFAULT),
+    ],
+    // Tambahkan lebih banyak data sesuai kebutuhan
+];
+
+// Menambahkan data ke dalam tabel users
+foreach ($userData as $user) {
+    User::create($user);
+}
+
+echo "User data has been inserted successfully!\n";
