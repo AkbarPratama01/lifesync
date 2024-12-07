@@ -2,25 +2,33 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/Config/database.php';
 
+use App\Models\User;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-echo "Welcome to the LifeSync CLI tool!\n";
-echo "Available commands:\n";
-echo "  migrate: Run database migrations\n";
+echo "Insert User Data\n";
 
-$command = $argv[1] ?? null;
+// Data pengguna yang akan ditambahkan
+$userData = [
+    [
+        'name' => 'John Doe',
+        'username' => 'John Doe',
+        'email' => 'john@example.com',
+        'password' => password_hash('password', PASSWORD_DEFAULT),
+    ],
+    [
+        'name' => 'Jane Smith',
+        'username' => 'Jane Smith',
+        'email' => 'jane@example.com',
+        'password' => password_hash('password', PASSWORD_DEFAULT),
+    ],
+    // Tambahkan lebih banyak data sesuai kebutuhan
+];
 
-if ($command === 'migrate') {
-    require_once __DIR__ . '/src/Config/database.php';
-
-    Capsule::schema()->create('example_table', function ($table) {
-        $table->increments('id');
-        $table->string('name');
-        $table->timestamps();
-    });
-
-    echo "Migrations completed successfully!\n";
-} else {
-    echo "Unknown command: $command\n";
+// Menambahkan data ke dalam tabel users
+foreach ($userData as $user) {
+    User::create($user);
 }
+
+echo "User data has been inserted successfully!\n";

@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Dotenv\Dotenv;
+
+// Load .env file
+$dotenv = Dotenv::createImmutable(__DIR__.'/../../');
+$dotenv->load();
 
 // Database configuration
 $capsule = new Capsule();
