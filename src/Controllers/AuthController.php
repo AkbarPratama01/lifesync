@@ -28,7 +28,14 @@ class AuthController
 
         // Validasi
         if ($user && password_verify($password, $user->password)) {
-            echo "Login berhasil! Selamat datang, " . $user->name;
+            session_start();
+            $_SESSION['user_id'] = $user->id;
+            $_SESSION['user_name'] = $user->name;
+            $_SESSION['user_email'] = $user->email;
+            // Redirect ke halaman login
+            header('location: /dashboard');
+            exit;
+            // echo "Login berhasil! Selamat datang, " . $user->name;
         } else {
             echo "Email atau password salah.";
         }
@@ -81,5 +88,13 @@ class AuthController
                 });
             </script>";
         }
+    }
+    
+    public function logout()
+    {
+        session_start();
+        session_destroy(); // Hapus semua data session
+        header('Location: /login');
+        exit;
     }
 }

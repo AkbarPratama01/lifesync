@@ -1,0 +1,65 @@
+/* Mengatur Flexbox pada Body */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #343a40;
+  color: #fff;
+  position: fixed;
+  transition: width 0.3s ease;
+  padding-top: 20px;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+}
+
+.sidebar a:hover {
+  background-color: #495057;
+}
+
+/* Konten */
+.content {
+  margin-left: 250px;
+  /* padding: 20px; */
+  transition: margin-left 0.3s ease;
+  flex: 1;
+}
+
+.content.collapsed {
+  margin-left: 0;
+}
+
+/* Memastikan footer tetap di bawah halaman */
+footer {
+  margin-top: auto;
+}
+
+/* Card Styling */
+.card {
+  margin-bottom: 20px;
+}
+
+/* Untuk mengatur tampilan list group */
+.list-group-item {
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+}
