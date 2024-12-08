@@ -14,7 +14,7 @@
           <a class="nav-link active" href="/dashboard">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/notifications">Notifications</a>
+          <a class="nav-link" href="/logout">Logout</a>
         </li>
       </ul>
     </div>
