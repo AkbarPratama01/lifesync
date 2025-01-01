@@ -3,7 +3,9 @@
 use App\Controllers\AuthController;
 use App\Controllers\DashboardController;
 use App\Controllers\JurnalHarianController;
+use App\Controllers\RiwayatShalatController;
 use App\Controllers\TodolistController;
+use App\Controllers\RiwayatFinansialController;
 
 // Definisikan rute aplikasi
 return [
@@ -34,4 +36,16 @@ return [
     '/jurnal-harian/edit/{id}' => [JurnalHarianController::class, 'edit'], // Menampilkan form untuk edit jurnal
     '/jurnal-harian/update/{id}' => [JurnalHarianController::class, 'update'], // Mengupdate jurnal (POST)
     '/jurnal-harian/delete/{id}' => [JurnalHarianController::class, 'delete'], // Menghapus jurnal
+
+    // Rute untuk Riwayat Shalat
+    '/riwayat-shalat' => [RiwayatShalatController::class, 'index'], // Menampilkan daftar riwayat shalat
+    '/riwayat-shalat/create' => [RiwayatShalatController::class, 'create'], // Menampilkan form untuk tambah riwayat shalat
+    '/riwayat-shalat/store' => [RiwayatShalatController::class, 'store'],  // Menyimpan entri riwayat shalat baru (POST)
+    '/riwayat-shalat/edit/{id}' => [RiwayatShalatController::class, 'edit'], // Menampilkan form untuk edit riwayat shalat
+    '/riwayat-shalat/update/{id}' => [RiwayatShalatController::class, 'update'], // Mengupdate riwayat shalat (POST)
+    '/riwayat-shalat/delete/{id}' => [RiwayatShalatController::class, 'delete'], // Menghapus riwayat shalat
+
+    '/financial_records' => [RiwayatFinansialController::class, 'index'], // Menampilkan daftar riwayat finansial
+    '/financial_records/store' => [RiwayatFinansialController::class, 'store'],  // Menyimpan entri riwayat shalat baru (POST)
+    '/financial_records/delete/{id}' => [RiwayatFinansialController::class, 'delete'], // Menghapus riwayat shalat
 ];
