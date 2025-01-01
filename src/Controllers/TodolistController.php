@@ -9,7 +9,7 @@ class TodolistController
     public function index()
     {
         // Pastikan user sudah login dan ambil user ID dari sesi
-        // session_start();
+        // 
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
             exit;
@@ -50,7 +50,7 @@ class TodolistController
 
     public function complete($id)
     {
-        session_start();
+        
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
             exit;
@@ -75,7 +75,7 @@ class TodolistController
     // Hapus tugas
     public function delete($id)
     {
-        session_start();
+        
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
             exit;
@@ -98,7 +98,7 @@ class TodolistController
 
     public function edit($id)
     {
-        // session_start();
+        // 
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
             exit;
@@ -121,7 +121,7 @@ class TodolistController
     // Proses pembaruan todo
     public function update()
     {
-        session_start();
+        
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
             exit;
