@@ -6,6 +6,7 @@ use App\Controllers\JurnalHarianController;
 use App\Controllers\RiwayatShalatController;
 use App\Controllers\TodolistController;
 use App\Controllers\RiwayatFinansialController;
+use App\Controllers\GoalController;
 
 // Definisikan rute aplikasi
 return [
@@ -50,4 +51,12 @@ return [
     '/financial_records/delete/{id}' => [RiwayatFinansialController::class, 'delete'], // Menghapus riwayat finansial
     '/financial_records/edit/{id}' => [RiwayatFinansialController::class, 'edit'], // Menampilkan form untuk edit riwayat finansial
     '/financial_records/update/{id}' => [RiwayatFinansialController::class, 'update'], // Mengupdate riwayat finansial (POST)
+
+    // Rute untuk goal List
+    '/goal' => [GoalController::class, 'index'],               // Halaman utama Todolist
+    '/goal/add' => [GoalController::class, 'add'],             // Tambah tugas (POST)
+    '/goal/complete/{id}' => [GoalController::class, 'complete'], // Menandai tugas sebagai selesai
+    '/goal/delete/{id}' => [GoalController::class, 'delete'], // Hapus tugas
+    '/goal/edit/{id}' => [GoalController::class, 'edit'],  // Edit tugas
+    '/goal/edit/submit' => [GoalController::class, 'update'], // Proses edit tugas (POST)
 ];
