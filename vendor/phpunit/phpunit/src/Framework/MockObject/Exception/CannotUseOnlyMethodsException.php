@@ -12,8 +12,6 @@ namespace PHPUnit\Framework\MockObject;
 use function sprintf;
 
 /**
- * @no-named-arguments Parameter names are not covered by the backward compatibility promise for PHPUnit
- *
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 final class CannotUseOnlyMethodsException extends \PHPUnit\Framework\Exception implements Exception
@@ -22,10 +20,10 @@ final class CannotUseOnlyMethodsException extends \PHPUnit\Framework\Exception i
     {
         parent::__construct(
             sprintf(
-                'Trying to configure method "%s" with onlyMethods(), but it does not exist in class "%s"',
+                'Trying to set mock method "%s" with onlyMethods, but it does not exist in class "%s". Use addMethods() for methods that do not exist in the class',
                 $methodName,
-                $type,
-            ),
+                $type
+            )
         );
     }
 }

@@ -11,10 +11,9 @@ namespace PHPUnit\Framework\Constraint;
 
 use function is_string;
 use function sprintf;
-use function str_contains;
+use function strpos;
 use function trim;
 use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Util\Exporter;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\Comparator\Factory as ComparatorFactory;
 
@@ -23,9 +22,12 @@ use SebastianBergmann\Comparator\Factory as ComparatorFactory;
  */
 final class IsEqualIgnoringCase extends Constraint
 {
-    private readonly mixed $value;
+    /**
+     * @var mixed
+     */
+    private $value;
 
-    public function __construct(mixed $value)
+    public function __construct($value)
     {
         $this->value = $value;
     }
@@ -42,7 +44,7 @@ final class IsEqualIgnoringCase extends Constraint
      *
      * @throws ExpectationFailedException
      */
-    public function evaluate(mixed $other, string $description = '', bool $returnResult = false): ?bool
+    public function evaluate($other, string $description = '', bool $returnResult = false): ?bool
     {
         // If $this->value and $other are identical, they are also equal.
         // This is the most common path and will allow us to skip
@@ -56,7 +58,7 @@ final class IsEqualIgnoringCase extends Constraint
         try {
             $comparator = $comparatorFactory->getComparatorFor(
                 $this->value,
-                $other,
+                $other
             );
 
             $comparator->assertEquals(
@@ -64,7 +66,7 @@ final class IsEqualIgnoringCase extends Constraint
                 $other,
                 0.0,
                 false,
-                true,
+                true
             );
         } catch (ComparisonFailure $f) {
             if ($returnResult) {
@@ -73,7 +75,7 @@ final class IsEqualIgnoringCase extends Constraint
 
             throw new ExpectationFailedException(
                 trim($description . "\n" . $f->getMessage()),
-                $f,
+                $f
             );
         }
 
@@ -82,23 +84,25 @@ final class IsEqualIgnoringCase extends Constraint
 
     /**
      * Returns a string representation of the constraint.
+     *
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function toString(bool $exportObjects = false): string
+    public function toString(): string
     {
         if (is_string($this->value)) {
-            if (str_contains($this->value, "\n")) {
+            if (strpos($this->value, "\n") !== false) {
                 return 'is equal to <text>';
             }
 
             return sprintf(
                 "is equal to '%s'",
-                $this->value,
+                $this->value
             );
         }
 
         return sprintf(
             'is equal to %s',
-            Exporter::export($this->value, $exportObjects),
+            $this->exporter()->export($this->value)
         );
     }
 }

@@ -149,4 +149,29 @@ class TodolistController
             echo "Task not found or permission denied.";
         }
     }
+
+    public function index2()
+    {
+        // Pastikan user sudah login dan ambil user ID dari sesi
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        $userId = $_SESSION['user_id'];
+
+        // Ambil data todos berdasarkan user_id
+        $todos = Todo::where('user_id', $userId)->get();
+
+        // Format the data into HTML or a string you can test
+        $output = "<h1>To-Do List</h1>";
+
+        // Example of looping through todos and adding them to the output
+        foreach ($todos as $todo) {
+            $output .= "<div class='todo'>{$todo->task}</div>";
+        }
+
+        return $output;
+    }
+
 }

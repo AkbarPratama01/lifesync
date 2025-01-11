@@ -46,6 +46,8 @@ return [
     '/riwayat-shalat/delete/{id}' => [RiwayatShalatController::class, 'delete'], // Menghapus riwayat shalat
 
     '/financial_records' => [RiwayatFinansialController::class, 'index'], // Menampilkan daftar riwayat finansial
-    '/financial_records/store' => [RiwayatFinansialController::class, 'store'],  // Menyimpan entri riwayat shalat baru (POST)
-    '/financial_records/delete/{id}' => [RiwayatFinansialController::class, 'delete'], // Menghapus riwayat shalat
+    '/financial_records/store' => [RiwayatFinansialController::class, 'store'],  // Menyimpan entri riwayat finansial baru (POST)
+    '/financial_records/delete/{id}' => [RiwayatFinansialController::class, 'delete'], // Menghapus riwayat finansial
+    '/financial_records/edit/{id}' => [RiwayatFinansialController::class, 'edit'], // Menampilkan form untuk edit riwayat finansial
+    '/financial_records/update/{id}' => [RiwayatFinansialController::class, 'update'], // Mengupdate riwayat finansial (POST)
 ];

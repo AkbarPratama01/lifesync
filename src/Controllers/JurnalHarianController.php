@@ -56,6 +56,11 @@ class JurnalHarianController
             'date' => $_POST['date'],
             'title' => $_POST['title'],
             'content' => $_POST['content'],
+            'emotions' => $_POST['emotions'],
+            'achievements' => $_POST['achievements'],
+            'failures' => $_POST['failures'],
+            'reflection' => $_POST['reflection'],
+            'plans' => $_POST['plans'],
         ];
 
         Journal::create($data);

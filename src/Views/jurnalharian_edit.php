@@ -35,6 +35,31 @@
               <textarea name="content" id="content" class="form-control" rows="5"
                 required><?= htmlspecialchars($journal->content) ?></textarea>
             </div>
+            <div class="mb-3">
+              <label for="emotions" class="form-label">Perasaan dan Emosi</label>
+              <textarea name="emotions" id="emotions" class="form-control" rows="5"
+                required><?= htmlspecialchars($journal->emotions) ?></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="achievements" class="form-label">Pencapaian</label>
+              <textarea name="achievements" id="achievements" class="form-control" rows="5"
+                required><?= htmlspecialchars($journal->achievements) ?></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="failures" class="form-label">Kegagalan</label>
+              <textarea name="failures" id="failures" class="form-control" rows="5"
+                required><?= htmlspecialchars($journal->failures) ?></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="reflection" class="form-label">Renungan</label>
+              <textarea name="reflection" id="reflection" class="form-control" rows="5"
+                required><?= htmlspecialchars($journal->reflection) ?></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="plans" class="form-label">Rencana untuk Esok</label>
+              <textarea name="plans" id="plans" class="form-control" rows="5"
+                required><?= htmlspecialchars($journal->plans) ?></textarea>
+            </div>
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
             <a href="/jurnal-harian" class="btn btn-secondary">Batal</a>
           </form>
