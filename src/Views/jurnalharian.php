@@ -26,15 +26,35 @@
           <form action="/jurnal-harian/store" method="POST">
             <div class="mb-3">
               <label for="date" class="form-label">Tanggal</label>
-              <input type="date" name="date" id="date" class="form-control" required>
+              <input type="date" name="date" id="date" class="form-control" value="<?= date('Y-m-d') ?>" required>
             </div>
             <div class="mb-3">
               <label for="title" class="form-label">Judul</label>
               <input type="text" name="title" id="title" class="form-control" required>
             </div>
             <div class="mb-3">
-              <label for="content" class="form-label">Konten</label>
+              <label for="content" class="form-label">Aktivitas Harian</label>
               <textarea name="content" id="content" class="form-control" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="emotions" class="form-label">Perasaan dan Emosi</label>
+              <textarea name="emotions" id="emotions" class="form-control" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="achievements" class="form-label">Pencapaian</label>
+              <textarea name="achievements" id="achievements" class="form-control" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="failures" class="form-label">Kegagalan</label>
+              <textarea name="failures" id="failures" class="form-control" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="reflection" class="form-label">Renungan</label>
+              <textarea name="reflection" id="reflection" class="form-control" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="plans" class="form-label">Rencana untuk Esok</label>
+              <textarea name="plans" id="plans" class="form-control" rows="5" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
           </form>

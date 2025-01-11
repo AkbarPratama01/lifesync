@@ -21,7 +21,7 @@
       <button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#addTaskModal">Add New Task</button>
 
       <!-- ToDo List Table -->
-      <table id="todoTable" class="table table-striped">
+      <table id="todoTable" class="table table-bordered table-striped">
         <thead>
           <tr>
             <th>#</th>

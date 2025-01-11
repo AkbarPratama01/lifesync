@@ -13,6 +13,11 @@ class Journal extends Model
         'date',
         'title',
         'content',
+        'emotions',
+        'achievements',
+        'failures',
+        'reflection',
+        'plans',
     ];
 
     /**

@@ -5,9 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riwayat Shalat</title>
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/sweetalert2.min.css" rel="stylesheet">
-  <link href="/css/style.css" rel="stylesheet">
+  <?php include 'style.php'; ?>
 
   <!-- Include DataTables CSS -->
   <link href="/css/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -20,6 +18,35 @@
     <div class="container mt-4">
       <h1 class="text-center">Riwayat Finansial</h1>
       <hr>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4>Pendapatan</h4>
+              <p><?php echo $formattedPendapatan; ?></p>
+              <!-- <button class="btn btn-primary"><i class="bi bi-box-arrow-right"></i> Detail</button> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4>Pengeluaran</h4>
+              <p><?php echo $formattedPengeluaran; ?></p>
+              <!-- <button class="btn btn-primary"><i class="bi bi-box-arrow-right"></i> Detail</button> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4>Balance</h4>
+              <p><?php echo $formattedBalance; ?></p>
+              <!-- <button class="btn btn-primary"><i class="bi bi-box-arrow-right"></i> Detail</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="card mb-4">
         <div class="card-header bg-primary text-white">Tambah Riwayat Finansial Baru</div>
         <div class="card-body">
@@ -55,7 +82,7 @@
                 required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-floppy-fill"></i> Simpan</button>
           </form>
         </div>
       </div>
@@ -80,14 +107,16 @@
                 <?php foreach ($financialHistory as $index => $financial): ?>
                 <tr>
                   <td><?= $index + 1 ?></td>
-                  <td><?= htmlspecialchars($financial->date) ?></td>
+                  <td><?= htmlspecialchars(date("d F Y", strtotime($financial->date))) ?></td>
                   <td><?= htmlspecialchars($financial->description) ?></td>
                   <td><?= htmlspecialchars($financial->category) ?></td>
                   <td><?= htmlspecialchars($financial->type) ?></td>
-                  <td><?= htmlspecialchars($financial->nominal) ?></td>
+                  <td><?= htmlspecialchars('Rp ' . number_format($financial->nominal, 0, ',', '.')) ?></td>
                   <td>
-                    <a href="/financial_records/edit/<?= $financial->id ?>" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete(<?= $financial->id ?>)">Hapus</a>
+                    <a href="/financial_records/edit/<?= $financial->id ?>" class="btn btn-warning btn-sm"><i
+                        class="bi bi-pencil-square"></i> Edit</a>
+                    <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete(<?= $financial->id ?>)"><i
+                        class="bi bi-trash-fill"></i> Hapus</a>
                   </td>
                 </tr>
                 <?php endforeach; ?>
@@ -100,12 +129,7 @@
   </div>
 
   <!-- Include DataTables JS -->
-  <script src="/js/jquery-3.6.0.js"></script>
-  <script src="/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/jquery.dataTables.min.js"></script>
-  <script src="/js/dataTables.bootstrap5.min.js"></script>
-  <script src="/js/sweetalert2.all.min.js"></script>
-  <script src="/js/script.js"></script>
+  <?php include 'script.php'; ?>
   <script>
   $(document).ready(function() {
     $('#shalatTable').DataTable(); // Initialize DataTables

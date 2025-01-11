@@ -16,9 +16,15 @@ use function count;
  */
 abstract class UnaryOperator extends Operator
 {
-    private readonly Constraint $constraint;
+    /**
+     * @var Constraint
+     */
+    private $constraint;
 
-    public function __construct(mixed $constraint)
+    /**
+     * @param Constraint|mixed $constraint
+     */
+    public function __construct($constraint)
     {
         $this->constraint = $this->checkConstraint($constraint);
     }
@@ -70,8 +76,12 @@ abstract class UnaryOperator extends Operator
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
+     *
+     * @param mixed $other evaluated value or object
+     *
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    protected function failureDescription(mixed $other): string
+    protected function failureDescription($other): string
     {
         $reduced = $this->reduce();
 
@@ -95,13 +105,15 @@ abstract class UnaryOperator extends Operator
     }
 
     /**
-     * Transforms string returned by the member constraint's toString() or
+     * Transforms string returned by the memeber constraint's toString() or
      * failureDescription() such that it reflects constraint's participation in
      * this expression.
      *
      * The method may be overwritten in a subclass to apply default
      * transformation in case the operand constraint does not provide its own
      * custom strings via toStringInContext() or failureDescriptionInContext().
+     *
+     * @param string $string the string to be transformed
      */
     protected function transformString(string $string): string
     {
