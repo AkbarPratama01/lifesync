@@ -7,6 +7,7 @@ use App\Controllers\RiwayatShalatController;
 use App\Controllers\TodolistController;
 use App\Controllers\RiwayatFinansialController;
 use App\Controllers\GoalController;
+use App\Controllers\QuranController;
 
 // Definisikan rute aplikasi
 return [
@@ -15,12 +16,10 @@ return [
     '/register' => [AuthController::class, 'showRegister'], // Halaman register
     '/login/submit' => [AuthController::class, 'handleLogin'],       // Proses login (POST)
     '/register/submit' => [AuthController::class, 'handleRegister'], // Proses register (POST)
+    '/logout' => [AuthController::class, 'logout'],  // Proses logout
     
     // Rute untuk dashboard
     '/dashboard' => [DashboardController::class, 'showDashboard'],   // Halaman utama dashboard
-    
-    // Rute untuk logout
-    '/logout' => [AuthController::class, 'logout'],  // Proses logout
     
     // Rute untuk ToDo List
     '/todolist' => [TodolistController::class, 'index'],               // Halaman utama Todolist
@@ -46,6 +45,7 @@ return [
     '/riwayat-shalat/update/{id}' => [RiwayatShalatController::class, 'update'], // Mengupdate riwayat shalat (POST)
     '/riwayat-shalat/delete/{id}' => [RiwayatShalatController::class, 'delete'], // Menghapus riwayat shalat
 
+    // Rute untuk Riwayat Finansial
     '/financial_records' => [RiwayatFinansialController::class, 'index'], // Menampilkan daftar riwayat finansial
     '/financial_records/store' => [RiwayatFinansialController::class, 'store'],  // Menyimpan entri riwayat finansial baru (POST)
     '/financial_records/delete/{id}' => [RiwayatFinansialController::class, 'delete'], // Menghapus riwayat finansial
@@ -59,4 +59,10 @@ return [
     '/goal/delete/{id}' => [GoalController::class, 'delete'], // Hapus tugas
     '/goal/edit/{id}' => [GoalController::class, 'edit'],  // Edit tugas
     '/goal/edit/submit' => [GoalController::class, 'update'], // Proses edit tugas (POST)
+
+    // Rute untuk Al-Quran
+    '/quran' => [QuranController::class, 'index'],               // Halaman utama Todolist
+    '/quran/{id}' => [QuranController::class, 'show'],
+    '/quran/bookmark/{id}' => [QuranController::class, 'bookmark'],
+    '/quran/bookmarked' => [QuranController::class, 'bookmarked'],
 ];
