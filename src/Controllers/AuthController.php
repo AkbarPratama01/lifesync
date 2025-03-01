@@ -37,7 +37,23 @@ class AuthController
             exit;
             // echo "Login berhasil! Selamat datang, " . $user->name;
         } else {
-            echo "Email atau password salah.";
+            echo "
+            <script src='/js/sweetalert2.all.min.js'></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    Swal.fire({
+                        title: 'Login Tidak Berhasil!',
+                        text: 'Email atau password salah.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '/login';
+                        }
+                    });
+                });
+            </script>";
+
         }
     }
 
@@ -63,15 +79,17 @@ class AuthController
             echo "
             <script src='/js/sweetalert2.all.min.js'></script>
             <script>
-                Swal.fire({
-                    title: 'Registrasi Berhasil!',
-                    text: 'Silakan login menggunakan akun Anda.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = '/login';
-                    }
+                document.addEventListener('DOMContentLoaded', () => {
+                    Swal.fire({
+                        title: 'Registrasi Berhasil!',
+                        text: 'Silakan login menggunakan akun Anda.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '/login';
+                        }
+                    });
                 });
             </script>";
             exit; // Pastikan script berhenti setelah redirect
@@ -80,11 +98,13 @@ class AuthController
             echo "
             <script src='/js/sweetalert2.all.min.js'></script>
             <script>
-                Swal.fire({
-                    title: 'Registrasi Gagal!',
-                    text: '". addslashes($e->getMessage()) ."',
-                    icon: 'error',
-                    confirmButtonText: 'Coba Lagi'
+                document.addEventListener('DOMContentLoaded', () => {
+                    Swal.fire({
+                        title: 'Registrasi Gagal!',
+                        text: '". addslashes($e->getMessage()) ."',
+                        icon: 'error',
+                        confirmButtonText: 'Coba Lagi'
+                    });
                 });
             </script>";
         }

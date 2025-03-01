@@ -84,6 +84,7 @@
                         <label class="form-check-label" for="<?= $key ?>"><?= $key ?></label>
                     </div>
                   <?php endforeach; ?>
+
                 </div>
               </div>
             </div>
@@ -91,75 +92,71 @@
         </div>
       </div>
       <!-- Dashboard Cards -->
-      <div class="row mt-4">
+      <div class="row">
         <!-- Todolist Card -->
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-6 col-md-6">
           <div class="card">
             <div class="card-header bg-primary text-white">
               Todolist
             </div>
             <div class="card-body">
-              <ul>
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
-              </ul>
+              <?php
+                
+                  if ($todos_length == 0) {
+                    echo '<p>Todolist masih kosong</p>';
+                  } else {
+                    echo '<ul>';
+                    foreach ($todos as $key => $value) {
+                      echo '<li>'.$value['task'].' ('.date("d F Y", strtotime($value['due_date'])).')</li>';
+                    }
+                    echo '</ul>';
+                  }
+                ?>
               <a href="/todolist" class="btn btn-primary">Lihat Todolist</a>
             </div>
           </div>
         </div>
 
         <!-- Jurnal Harian Card -->
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-6 col-md-6">
           <div class="card">
             <div class="card-header bg-success text-white">
               Jurnal Harian
             </div>
             <div class="card-body">
-              <p>Ringkasan Jurnal Hari Ini...</p>
-              <a href="#" class="btn btn-success">Lihat Jurnal Harian</a>
-            </div>
-          </div>
-        </div>
+              <?php
+                if ($journals_length == 0) {
+                  echo '<p>Jurnal belum dibuat</p>';
+                } else {
+                  echo '<h5>'.$journals[0]['title'].'</h5>';
+                  echo '<b> Aktivitas Harian</b> : <p>'.$journals[0]['content'].'.</p>';
+                  echo '<b>Perasaan dan Emosi</b> : <p>'.$journals[0]['emotions'].'.</p>';
+                  echo '<b>Pencapaian</b> : <p>'.$journals[0]['achievements'].'.</p>';
+                  echo '<b>Kegagalan</b> : <p>'.$journals[0]['failures'].'.</p>';
+                  echo '<b>Renungan</b> : <p>'.$journals[0]['reflection'].'.</p>';
+                  echo '<b>Rencana untuk Esok</b> : <p>'.$journals[0]['plans'].'.</p>';
 
-        <!-- Riwayat Shalat Card -->
-        <div class="col-lg-4 col-md-6">
-          <div class="card">
-            <div class="card-header bg-info text-white">
-              Riwayat Shalat
-            </div>
-            <div class="card-body">
-              <p>Shalat yang telah dilakukan...</p>
-              <a href="#" class="btn btn-info">Lihat Riwayat Shalat</a>
+                }
+                
+              ?>
+
+              <a href="/jurnal-harian" class="btn btn-success">Lihat Jurnal Harian</a>
             </div>
           </div>
         </div>
 
         <!-- Riwayat Bacaan Quran Card -->
-        <div class="col-lg-4 col-md-6">
+        <!-- <div class="col-lg-4 col-md-6">
           <div class="card">
             <div class="card-header bg-warning text-white">
               Riwayat Bacaan Quran
             </div>
             <div class="card-body">
               <p>Jumlah ayat yang sudah dibaca...</p>
-              <a href="#" class="btn btn-warning">Lihat Riwayat Bacaan Quran</a>
+              <a href="/quran" class="btn btn-warning">Lihat Riwayat Bacaan Quran</a>
             </div>
           </div>
-        </div>
-
-        <!-- Riwayat Financial Card -->
-        <div class="col-lg-4 col-md-6">
-          <div class="card">
-            <div class="card-header bg-danger text-white">
-              Riwayat Financial
-            </div>
-            <div class="card-body">
-              <p>Transaksi yang dilakukan...</p>
-              <a href="#" class="btn btn-danger">Lihat Riwayat Financial</a>
-            </div>
-          </div>
-        </div>
+        </div> -->
       </div>
 
     </div>

@@ -66,9 +66,7 @@ class DashboardController
         $doneCount = count(array_filter($shalatList, fn($s) => $s == "Ya"));
         $totalCount = count($shalatList);
         $progress = ($doneCount / $totalCount) * 100;
-
-        // var_dump($progress);
-
+      
         // Tampilkan halaman dashboard
         require __DIR__ . '/../Views/dashboard.php';
     }
