@@ -4,3 +4,4 @@
 /storage
 composer.lock
 .env
+.DS_Store
