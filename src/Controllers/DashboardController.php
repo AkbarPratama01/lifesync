@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\RiwayatFinansial;
 use App\Models\Todo; 
 use App\Models\Journal;
+use App\Models\RiwayatShalat;
 
 class DashboardController
 {
@@ -48,7 +49,46 @@ class DashboardController
         $journals = Journal::where('user_id', $userId)->where('date', $now)->orderBy('date', 'desc')->get();
         $journals_length = count($journals);
 
+        // Ambil data riwayat shalat berdasarkan user_id dan hari ini
+        $shalats = RiwayatShalat::where('user_id', $userId)->where('date', $now)->first();
+        // echo json_encode($shalats);
+
+        // Daftar shalat wajib dengan nilai dari database
+        $shalatList = [
+            "Fajr" => $shalats->fajr ?? "Tidak",
+            "Dhuhr" => $shalats->dhuhr ?? "Tidak",
+            "Asr" => $shalats->asr ?? "Tidak",
+            "Maghrib" => $shalats->maghrib ?? "Tidak",
+            "Isha" => $shalats->isha ?? "Tidak"
+        ];
+
+        // Hitung jumlah shalat yang sudah dilakukan
+        $doneCount = count(array_filter($shalatList, fn($s) => $s == "Ya"));
+        $totalCount = count($shalatList);
+        $progress = ($doneCount / $totalCount) * 100;
+      
         // Tampilkan halaman dashboard
         require __DIR__ . '/../Views/dashboard.php';
     }
+
+    public function updateShalat()
+    {
+        session_start();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userId = $_SESSION['user_id'];
+            $date = date('Y-m-d');
+            $shalat = strtolower($_POST['shalat']); // Nama kolom harus sesuai database
+            $checked = $_POST['checked'];
+
+            // Panggil method model
+            RiwayatShalat::updateShalatRecord($userId, $date, $shalat, $checked);
+
+            echo json_encode(["success" => true]);
+        } else {
+            http_response_code(405);
+            echo json_encode(["error" => "Invalid request"]);
+        }
+    }
+
 }

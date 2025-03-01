@@ -59,37 +59,32 @@
         <div class="col-md-12 col-sm-12 col-12">
           <div class="card mb-4">
             <div class="card-header">
-              <h5><?= date("d F Y"); ?></h5>
+                <h5><?= date("d F Y"); ?></h5>
             </div>
             <div class="card-body">
               <div class="row">
+                <!-- Progress Bar -->
                 <div class="col-md-6">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
-                      aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id="progressBar" class="progress-bar progress-bar-striped bg-success"
+                        role="progressbar" style="width: <?= $progress ?>%"
+                        aria-valuenow="<?= $progress ?>" aria-valuemin="0" aria-valuemax="100">
+                    </div>
                   </div>
                 </div>
+
+                <!-- Checkbox untuk Shalat -->
                 <div class="col-md-6">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Shubuh" value="Ya">
-                    <label class="form-check-label" for="Shubuh">Shubuh</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Dzuhur" value="Ya">
-                    <label class="form-check-label" for="Dzuhur">Dzuhur</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Ashar" value="Ya">
-                    <label class="form-check-label" for="Ashar">Ashar</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Maghrib" value="Ya">
-                    <label class="form-check-label" for="Maghrib">Maghrib</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Isya" value="Ya">
-                    <label class="form-check-label" for="Isya">Isya</label>
-                  </div>
+                  <?php foreach ($shalatList as $key => $value): ?>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input shalat-checkbox" type="checkbox"
+                              id="<?= $key ?>" value="Ya"
+                              data-shalat="<?= $key ?>"
+                              <?= $value == "Ya" ? 'checked' : '' ?>>
+                        <label class="form-check-label" for="<?= $key ?>"><?= $key ?></label>
+                    </div>
+                  <?php endforeach; ?>
+
                 </div>
               </div>
             </div>
@@ -170,6 +165,7 @@
   </div>
 
   <!-- Bootstrap JS Bundle -->
+  <script src="/js/jquery-3.6.0.js"></script>
   <script src="/js/bootstrap.bundle.min.js"></script>
   <script src="/js/script.js"></script>
 </body>

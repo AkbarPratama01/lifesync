@@ -24,3 +24,29 @@ adjustSidebarForMobile();
 
 // Tambahkan event listener untuk mendeteksi perubahan ukuran layar
 window.addEventListener('resize', adjustSidebarForMobile);
+
+$(document).ready(function () {
+    $(".shalat-checkbox").change(function () {
+        let checkedCount = $(".shalat-checkbox:checked").length;
+        let totalCount = $(".shalat-checkbox").length;
+        let progress = (checkedCount / totalCount) * 100;
+
+        $("#progressBar").css("width", progress + "%").attr("aria-valuenow", progress);
+
+        let shalat = $(this).data("shalat");
+        let checked = $(this).prop("checked") ? "Ya" : "Tidak";
+
+        $.ajax({
+            url: "dashboard/update-shalat",
+            type: "POST",
+            data: { shalat: shalat, checked: checked },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    });
+});
+

@@ -20,6 +20,7 @@ return [
     
     // Rute untuk dashboard
     '/dashboard' => [DashboardController::class, 'showDashboard'],   // Halaman utama dashboard
+    '/dashboard/update-shalat' => [DashboardController::class, 'updateShalat'], // Proses update riwayat shalat (POST)
     
     // Rute untuk ToDo List
     '/todolist' => [TodolistController::class, 'index'],               // Halaman utama Todolist
