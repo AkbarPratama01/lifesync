@@ -43,11 +43,11 @@ class DashboardController
 
         // Ambil data todos berdasarkan user_id
         $todos = Todo::where('user_id', $userId)->get();
-        $todos_length = count($todos);
+        $todosCount = count($todos);
 
         $now = date("Y-m-d");
         $journals = Journal::where('user_id', $userId)->where('date', $now)->orderBy('date', 'desc')->get();
-        $journals_length = count($journals);
+        $journalsCount = count($journals);
 
         // Ambil data riwayat shalat berdasarkan user_id dan hari ini
         $shalats = RiwayatShalat::where('user_id', $userId)->where('date', $now)->first();

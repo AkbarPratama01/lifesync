@@ -102,7 +102,7 @@
             <div class="card-body">
               <?php
                 
-                  if ($todos_length == 0) {
+                  if ($todosCount == 0) {
                     echo '<p>Todolist masih kosong</p>';
                   } else {
                     echo '<ul>';
@@ -125,7 +125,7 @@
             </div>
             <div class="card-body">
               <?php
-                if ($journals_length == 0) {
+                if ($journalsCount == 0) {
                   echo '<p>Jurnal belum dibuat</p>';
                 } else {
                   echo '<h5>'.$journals[0]['title'].'</h5>';
