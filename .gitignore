@@ -1,7 +1,6 @@
 /vendor
-/.env
+.env
 /node_modules
 /storage
 composer.lock
-.env
 .DS_Store
