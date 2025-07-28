@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 use App\Controllers\TodolistController;
 use App\Models\Todo;
 
-class TodolistControllerTest extends TestCase
+class TodoModelTest extends TestCase
 {
     public function testIndex2ReturnsCorrectViewWithData()
     {
