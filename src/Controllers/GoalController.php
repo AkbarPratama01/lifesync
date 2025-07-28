@@ -129,7 +129,7 @@ class GoalController
     $id = $_POST['id'];
     $text = $_POST['text'];
     $year = $_POST['year'];
-    $is_completed = isset($_POST['is_completed']) ? 1 : 0;
+    $isCompleted = isset($_POST['is_completed']) ? 1 : 0;
 
     // Update data task di database
     $goal = Goal::where('id', $id)
@@ -139,7 +139,7 @@ class GoalController
     if ($goal) {
         $goal->text = $text;
         $goal->year = $year;
-        $goal->is_completed = $is_completed;
+        $goal->is_completed = $isCompleted;
         $goal->save();
         header('Location: /goal');
         exit;

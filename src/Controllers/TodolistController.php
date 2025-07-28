@@ -131,7 +131,7 @@ class TodolistController
         $id = $_POST['id'];
         $task = $_POST['task'];
         $due_date = $_POST['due_date'];
-        $is_completed = isset($_POST['is_completed']) ? 1 : 0;
+        $isCompleted = isset($_POST['is_completed']) ? 1 : 0;
 
         // Update data task di database
         $todo = Todo::where('id', $id)
@@ -141,7 +141,7 @@ class TodolistController
         if ($todo) {
             $todo->task = $task;
             $todo->due_date = $due_date;
-            $todo->is_completed = $is_completed;
+            $todo->is_completed = $isCompleted;
             $todo->save();
             header('Location: /todolist');
             exit;

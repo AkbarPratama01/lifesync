@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'akbarpratama/lifesync',
-        'pretty_version' => 'dev-copilot/fix-26acefb3-76d5-4e71-a1a9-1084e2c2be77',
-        'version' => 'dev-copilot/fix-26acefb3-76d5-4e71-a1a9-1084e2c2be77',
-        'reference' => '17cfa0094aaa322168b3b4cd2f082b2121674747',
+        'pretty_version' => 'dev-copilot/fix-c60622e1-af48-47da-b74f-b19078570471',
+        'version' => 'dev-copilot/fix-c60622e1-af48-47da-b74f-b19078570471',
+        'reference' => 'c659a9f003240d2e46cfb530ba92eb92381f1a79',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'akbarpratama/lifesync' => array(
-            'pretty_version' => 'dev-copilot/fix-26acefb3-76d5-4e71-a1a9-1084e2c2be77',
-            'version' => 'dev-copilot/fix-26acefb3-76d5-4e71-a1a9-1084e2c2be77',
-            'reference' => '17cfa0094aaa322168b3b4cd2f082b2121674747',
+            'pretty_version' => 'dev-copilot/fix-c60622e1-af48-47da-b74f-b19078570471',
+            'version' => 'dev-copilot/fix-c60622e1-af48-47da-b74f-b19078570471',
+            'reference' => 'c659a9f003240d2e46cfb530ba92eb92381f1a79',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
