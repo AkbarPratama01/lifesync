@@ -1,0 +1,1 @@
+{"version":1,"defects":{"TodolistControllerTest::testIndex2ReturnsCorrectView":4,"TodoModelTest::testIndex2ReturnsCorrectViewWithData":6},"times":{"TodolistControllerTest::testIndex2ReturnsCorrectView":0,"TodoModelTest::testIndex2ReturnsCorrectViewWithData":0}}

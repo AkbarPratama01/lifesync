@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'akbarpratama/lifesync',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '7f8ff19dd7574c5e809c9a46bbbe7722d44137bb',
+        'pretty_version' => 'dev-copilot/fix-26acefb3-76d5-4e71-a1a9-1084e2c2be77',
+        'version' => 'dev-copilot/fix-26acefb3-76d5-4e71-a1a9-1084e2c2be77',
+        'reference' => '17cfa0094aaa322168b3b4cd2f082b2121674747',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'akbarpratama/lifesync' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '7f8ff19dd7574c5e809c9a46bbbe7722d44137bb',
+            'pretty_version' => 'dev-copilot/fix-26acefb3-76d5-4e71-a1a9-1084e2c2be77',
+            'version' => 'dev-copilot/fix-26acefb3-76d5-4e71-a1a9-1084e2c2be77',
+            'reference' => '17cfa0094aaa322168b3b4cd2f082b2121674747',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
